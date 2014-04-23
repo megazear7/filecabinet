@@ -5,6 +5,9 @@ class CabinetsController < ApplicationController
   # GET /cabinets
   # GET /cabinets.json
   def index
+    if not current_user
+      redirect_to new_user_session_path
+    end
     @cabinets = current_user.cabinets
   end
 
