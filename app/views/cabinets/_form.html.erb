@@ -11,11 +11,22 @@
     </div>
   <% end %>
 
-  <%= f.input :name %>
-  <%= f.input :description %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.input :name, input_html: { class: "string form-control" } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.input :description, input_html: { class: "text form-control", rows: 10 } %>
+    </div>
+  </div>
+  <br/>
+
   <%= f.hidden_field :user_id, value: current_user.id %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
