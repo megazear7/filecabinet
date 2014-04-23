@@ -1,0 +1,25 @@
+<h1>Listing cabinets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cabinets.each do |cabinet| %>
+      <tr>
+        <td><%= link_to 'Show', cabinet %></td>
+        <td><%= link_to 'Edit', edit_cabinet_path(cabinet) %></td>
+        <td><%= link_to 'Destroy', cabinet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cabinet', new_cabinet_path %>
