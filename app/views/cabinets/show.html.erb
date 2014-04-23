@@ -1,4 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cabinet.folders.each do |folder| %>
+      <tr>
+        <td><%= link_to folder.name, [@cabinet, folder] %></td>
+        <td><%= folder.description %></td>
+        <td><%= link_to 'Edit', edit_cabinet_folder_path(@cabinet, folder) %></td>
+        <td><%= link_to 'Destroy', [@cabinet, folder], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_cabinet_path(@cabinet) %> |
 <%= link_to 'Back', cabinets_path %>

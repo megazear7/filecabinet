@@ -1,6 +1,6 @@
 class FoldersController < ApplicationController
   before_action :set_folder,  only: [:show, :edit, :update, :destroy]
-  before_action :set_cabinet, only: [:show, :edit, :update, :destroy, :new, :index]
+  before_action :set_cabinet, only: [:show, :edit, :update, :destroy, :new]
   before_action :authenticate_user!
 
   # GET /folders

@@ -11,12 +11,12 @@
   </thead>
 
   <tbody>
-    <% @folders.each do |folder| %>
+    <% current_user.folders.each do |folder| %>
       <tr>
-        <td><%= link_to folder.name, [@cabinet, folder] %></td>
+        <td><%= link_to folder.name, [folder.cabinet, folder] %></td>
         <td><%= folder.description %></td>
-        <td><%= link_to 'Edit', edit_cabinet_folder_path(@cabinet, folder) %></td>
-        <td><%= link_to 'Destroy', [@cabinet, folder], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_cabinet_folder_path(folder.cabinet, folder) %></td>
+        <td><%= link_to 'Destroy', [folder.cabinet, folder], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Folder', new_cabinet_folder_path(@cabinet) %>
+<%= link_to 'Go To Cabinet Listing To Create a new Folder', cabinets_path %>
