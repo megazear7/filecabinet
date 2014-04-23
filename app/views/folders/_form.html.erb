@@ -1,4 +1,4 @@
-<%= simple_form_for(@folder, url: cabinet_folder_path(@cabinet)) do |f| %>
+<%= simple_form_for([@cabinet, @folder]) do |f| %>
   <% if @folder.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
@@ -13,6 +13,7 @@
 
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.hidden_field :cabinet_id, value: @cabinet.id %>
 
   <div class="actions">
     <%= f.submit %>

@@ -27,10 +27,11 @@ class FoldersController < ApplicationController
   # POST /folders.json
   def create
     @folder = Folder.new(folder_params)
+    @cabinet = @folder.cabinet
 
     respond_to do |format|
       if @folder.save
-        format.html { redirect_to @folder, notice: 'Folder was successfully created.' }
+        format.html { redirect_to [@cabinet, @folder], notice: 'Folder was successfully created.' }
         format.json { render action: 'show', status: :created, location: @folder }
       else
         format.html { render action: 'new' }
@@ -58,7 +59,7 @@ class FoldersController < ApplicationController
   def destroy
     @folder.destroy
     respond_to do |format|
-      format.html { redirect_to folders_url }
+      format.html { redirect_to cabinet_folders_url(@cabinet) }
       format.json { head :no_content }
     end
   end

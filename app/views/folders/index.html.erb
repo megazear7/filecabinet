@@ -13,9 +13,10 @@
   <tbody>
     <% @folders.each do |folder| %>
       <tr>
-        <td><%= link_to folder.name, folder %></td>
+        <td><%= link_to folder.name, [@cabinet, folder] %></td>
+        <td><%= folder.description %></td>
         <td><%= link_to 'Edit', edit_cabinet_folder_path(@cabinet, folder) %></td>
-        <td><%= link_to 'Destroy', folder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', [@cabinet, folder], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
