@@ -1,18 +1,22 @@
 <h1>Listing cabinets</h1>
 
-<table>
+<table class="table table-hover table-responsive">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Add Folder</th>
+      <th>Edit</th>
+      <th>Destroy</th>
     </tr>
   </thead>
 
   <tbody>
     <% @cabinets.each do |cabinet| %>
       <tr>
-        <td><%= link_to 'Show', cabinet %></td>
+        <td><%= link_to cabinet.name, cabinet %></td>
+        <td><%= cabinet.description %></td>
+        <td><%= link_to 'Add Folder', new_cabinet_folder_path(cabinet) %></td>
         <td><%= link_to 'Edit', edit_cabinet_path(cabinet) %></td>
         <td><%= link_to 'Destroy', cabinet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

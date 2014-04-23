@@ -1,5 +1,6 @@
 class FoldersController < ApplicationController
-  before_action :set_folder, only: [:show, :edit, :update, :destroy]
+  before_action :set_folder,  only: [:show, :edit, :update, :destroy]
+  before_action :set_cabinet, only: [:show, :edit, :update, :destroy, :new, :index]
   before_action :authenticate_user!
 
   # GET /folders
@@ -66,6 +67,10 @@ class FoldersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_folder
       @folder = Folder.find(params[:id])
+    end
+
+    def set_cabinet
+      @cabinet = Cabinet.find(params[:cabinet_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
