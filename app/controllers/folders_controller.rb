@@ -73,7 +73,8 @@ class FoldersController < ApplicationController
       params.require(:folder).permit(
         :id,
         :name,
-        :description
+        :description,
+        :cabinet_id
       )
     end
 end

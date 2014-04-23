@@ -73,7 +73,8 @@ class CabinetsController < ApplicationController
       params.require(:cabinet).permit(
         :id,
         :name,
-        :description
+        :description,
+        :user_id
       )
     end
 end
