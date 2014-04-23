@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_cabinet_folder_path(@folder.cabinet, @folder) %> |
-<%= link_to 'Back', cabinet_folders_path(@cabinet) %>
+<h4>
+	<%= @folder.name %>
+</h1>
+<p>
+	<%= @folder.description %>
+</p>
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_cabinet_folder_path(@folder.cabinet, @folder), class: "btn btn-default" %>
+  <%= link_to 'Back', cabinet_folders_path(@cabinet), class: "btn btn-default" %>
+</div>
