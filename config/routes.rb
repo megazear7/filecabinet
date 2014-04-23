@@ -1,4 +1,5 @@
 Filecabinet::Application.routes.draw do
+
   resources :folders
 
   resources :cabinets

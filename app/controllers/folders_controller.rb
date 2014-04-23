@@ -1,5 +1,6 @@
 class FoldersController < ApplicationController
   before_action :set_folder, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /folders
   # GET /folders.json
@@ -69,6 +70,10 @@ class FoldersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def folder_params
-      params[:folder]
+      params.require(:folder).permit(
+        :id,
+        :name,
+        :description
+      )
     end
 end

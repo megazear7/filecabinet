@@ -1,5 +1,6 @@
 class CabinetsController < ApplicationController
   before_action :set_cabinet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /cabinets
   # GET /cabinets.json
@@ -69,6 +70,10 @@ class CabinetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cabinet_params
-      params[:cabinet]
+      params.require(:cabinet).permit(
+        :id,
+        :name,
+        :description
+      )
     end
 end
