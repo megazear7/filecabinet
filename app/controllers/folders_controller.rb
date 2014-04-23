@@ -6,7 +6,7 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
-    @folders = Folder.all
+    @folders = current_user.folders
   end
 
   # GET /folders/1
@@ -28,6 +28,10 @@ class FoldersController < ApplicationController
   def create
     @folder = Folder.new(folder_params)
     @cabinet = @folder.cabinet
+
+    if @cabinet.user != current_user
+      redirect_to cabinets_path
+    end
 
     respond_to do |format|
       if @folder.save
@@ -72,6 +76,9 @@ class FoldersController < ApplicationController
 
     def set_cabinet
       @cabinet = Cabinet.find(params[:cabinet_id])
+      if @cabinet.user != current_user
+        redirect_to cabinets_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -5,7 +5,7 @@ class CabinetsController < ApplicationController
   # GET /cabinets
   # GET /cabinets.json
   def index
-    @cabinets = Cabinet.all
+    @cabinets = current_user.cabinets
   end
 
   # GET /cabinets/1
@@ -26,6 +26,10 @@ class CabinetsController < ApplicationController
   # POST /cabinets.json
   def create
     @cabinet = Cabinet.new(cabinet_params)
+
+    if @cabinet.user != current_user
+      redirect_to cabinets_path
+    end
 
     respond_to do |format|
       if @cabinet.save
@@ -66,6 +70,9 @@ class CabinetsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cabinet
       @cabinet = Cabinet.find(params[:id])
+      if @cabinet.user != current_user
+        redirect_to cabinets_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
